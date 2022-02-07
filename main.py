@@ -2,9 +2,9 @@ from menu import MENU
 import operator
 
 resources = {
-    "water": 300,
-    "milk": 200,
-    "coffee": 100,
+    "water": 500,
+    "milk": 400,
+    "coffee": 200,
 
 }
 profit = 0
@@ -45,6 +45,8 @@ while machine_on:
             print("not enough money")
         if change >= 0:
             print(f"${change} change")
+            profit += coffee_cost
+            print(profit)
             if coffee == MENU["espresso"]:
                 resources["water"] = difference[0]
                 resources["coffee"] = difference[1]
