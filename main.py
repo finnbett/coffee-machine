@@ -7,6 +7,7 @@ resources = {
     "coffee": 100,
 
 }
+profit = 0
 # set the machine to "on".
 machine_on = True
 while machine_on:
@@ -40,20 +41,20 @@ while machine_on:
         coin_total += two_dollar_total
         print(f"you have given ${coin_total}")
         change = coin_total - coffee_cost
-        if change:
-            print(f"{change} change")
-
-
-        if coffee == MENU["espresso"]:
-            resources["water"] = difference[0]
-            resources["coffee"] = difference[1]
-            resources["milk"] = resources["milk"]
-        else:
-            resources["water"] = difference[0]
-            resources["milk"] = difference[1]
-            resources["coffee"] = difference[2]
-        #print(resources)
-        print(f"enjoy your {request}")
+        if change < 0:
+            print("not enough money")
+        if change >= 0:
+            print(f"${change} change")
+            if coffee == MENU["espresso"]:
+                resources["water"] = difference[0]
+                resources["coffee"] = difference[1]
+                resources["milk"] = resources["milk"]
+            else:
+                resources["water"] = difference[0]
+                resources["milk"] = difference[1]
+                resources["coffee"] = difference[2]
+            #print(resources)
+            print(f"enjoy your {request}")
 
     else:
         print("sorry not enough resources")
